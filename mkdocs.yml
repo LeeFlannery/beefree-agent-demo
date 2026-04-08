@@ -1,0 +1,43 @@
+site_name: beefree-agent-demo
+site_description: PydanticAI + MCP demo targeting Beefree SDK. Model-agnostic. No lock-in.
+site_url: https://leeflannery.github.io/beefree-agent-demo/
+repo_url: https://github.com/LeeFlannery/beefree-agent-demo
+repo_name: LeeFlannery/beefree-agent-demo
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Configuration: configuration.md
+  - Architecture: architecture.md
