@@ -20,18 +20,31 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.instant
+    - navigation.instant.progress
     - navigation.top
+    - navigation.sections
+    - navigation.indexes
+    - toc.follow
     - content.code.copy
     - content.code.annotate
+    - content.tabs.link
 
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.superfences
   - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
   - admonition
+  - pymdownx.details
   - tables
   - toc:
       permalink: true
