@@ -68,7 +68,7 @@ async def websocket_chat(websocket: WebSocket) -> None:
                             async with node.stream(run.ctx) as stream:
                                 async for event in stream:
                                     if isinstance(event, FunctionToolResultEvent):
-                                        _maybe_send_tool_result(
+                                        await _maybe_send_tool_result(
                                             websocket, event
                                         )
 
