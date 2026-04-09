@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, type KeyboardEvent } from 'react'
-import { Button, Textarea, Spinner, ScrollShadow } from '@heroui/react'
+import { Button, TextArea, Spinner, ScrollShadow } from '@heroui/react'
 import { useChat } from '../api/useChat'
 
 export default function ChatPanel() {
@@ -18,7 +18,7 @@ export default function ChatPanel() {
     setInput('')
   }
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       handleSend()
@@ -32,7 +32,7 @@ export default function ChatPanel() {
         <h2 className="font-semibold text-sm">Chat</h2>
         {isStreaming && (
           <div className="flex items-center gap-1.5 ml-1">
-            <Spinner size="sm" color="primary" />
+            <Spinner size="sm" color="current" />
             <span className="text-xs text-default-400">thinking...</span>
           </div>
         )}
@@ -82,20 +82,18 @@ export default function ChatPanel() {
       {/* Input */}
       <div className="p-4 border-t border-divider shrink-0">
         <div className="flex gap-2 items-end">
-          <Textarea
+          <TextArea
             value={input}
-            onValueChange={setInput}
+            onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Message the agent... (Enter to send, Shift+Enter for newline)"
-            minRows={1}
-            maxRows={5}
-            className="flex-1"
+            rows={3}
             isDisabled={isStreaming}
-            variant="bordered"
-            size="sm"
+            fullWidth
+            className="flex-1 resize-none"
           />
           <Button
-            color="primary"
+            variant="primary"
             onPress={handleSend}
             isDisabled={!input.trim() || isStreaming}
             isIconOnly

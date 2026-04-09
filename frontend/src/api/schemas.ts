@@ -13,7 +13,7 @@ const ImageModuleSchema = z.object({
       href: z.string().optional(),
       width: z.string().optional(),
     }),
-    style: z.record(z.string()).optional(),
+    style: z.record(z.string(), z.unknown()).optional(),
   }),
 })
 
@@ -21,7 +21,7 @@ const TextModuleSchema = z.object({
   type: z.literal('mailup-bee-newsletter-modules-text'),
   descriptor: z.object({
     text: z.object({ html: z.string() }),
-    style: z.record(z.string()).optional(),
+    style: z.record(z.string(), z.unknown()).optional(),
   }),
 })
 
@@ -31,7 +31,7 @@ const ButtonModuleSchema = z.object({
     button: z.object({
       label: z.string(),
       href: z.string().optional(),
-      style: z.record(z.string()).optional(),
+      style: z.record(z.string(), z.unknown()).optional(),
     }),
   }),
 })
@@ -41,14 +41,14 @@ const ModuleSchema = z.union([ImageModuleSchema, TextModuleSchema, ButtonModuleS
 const ColumnSchema = z.object({
   id: z.string(),
   modules: z.array(ModuleSchema),
-  style: z.record(z.string()).optional(),
+  style: z.record(z.string(), z.unknown()).optional(),
 })
 
 const RowSchema = z.object({
   id: z.string(),
   cells: z.array(z.number()),
   columns: z.array(ColumnSchema),
-  style: z.record(z.string()).optional(),
+  style: z.record(z.string(), z.unknown()).optional(),
 })
 
 // ---------------------------------------------------------------------------
