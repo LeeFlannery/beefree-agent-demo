@@ -49,9 +49,9 @@ cd backend
 uv run python mcp_mock.py
 # listening on http://localhost:8001
 
-# 3. Terminal B - agent + API
+# 3. Terminal B - agent + API (key injected from 1Password, never hits disk)
 cd backend
-uv run python main.py
+op run --env-file=.env.secrets -- uv run python main.py
 # listening on http://localhost:8000
 
 # 4. Terminal C - frontend

@@ -45,8 +45,10 @@ INFO:     Uvicorn running on http://0.0.0.0:8001
 
 ```bash
 cd backend
-uv run python main.py
+op run --env-file=.env.secrets -- uv run python main.py
 ```
+
+The `op run` command injects your API key from 1Password at process start. It never lands on disk.
 
 ```
 INFO:     Uvicorn running on http://0.0.0.0:8000
